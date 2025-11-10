@@ -1,0 +1,125 @@
+/* style.css */
+
+/* 🎨 기본 스타일 및 폰트 설정 */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f7f6; /* 연한 배경색 */
+    color: #333;
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* 🖼️ 컨테이너 스타일 (계산기 영역) */
+.calculator-container {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 12px; /* 둥근 모서리 */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* 은은한 그림자 */
+    max-width: 450px;
+    width: 100%;
+}
+
+/* 🏆 제목 스타일 */
+h1 {
+    text-align: center;
+    color: #008000; /* 재활용을 상징하는 녹색 */
+    margin-bottom: 25px;
+    font-size: 1.8em;
+    border-bottom: 2px solid #e0e0e0;
+    padding-bottom: 10px;
+}
+
+/* 📝 입력 그룹 스타일 */
+.input-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #555;
+    font-size: 0.95em;
+}
+
+/* 📥 입력 필드 및 드롭다운 스타일 */
+select, input[type="number"] {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #dcdcdc;
+    border-radius: 6px;
+    box-sizing: border-box;
+    font-size: 1em;
+    transition: border-color 0.3s;
+}
+
+select:focus, input[type="number"]:focus {
+    border-color: #008000; /* 포커스 시 녹색 강조 */
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 128, 0, 0.2);
+}
+
+/* 🟢 계산 버튼 스타일 */
+#calculateBtn {
+    background-color: #00a651; /* 더 밝은 녹색 */
+    color: white;
+    padding: 12px 15px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-top: 10px;
+    width: 100%;
+    font-size: 1.1em;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+#calculateBtn:hover {
+    background-color: #008000; /* 호버 시 색상 어둡게 */
+}
+
+/* 🧮 결과 표시 영역 스타일 */
+#result {
+    margin-top: 30px;
+    padding: 20px;
+    border: 1px solid #e0e0e0;
+    background-color: #f9fffb; /* 연한 녹색 배경 */
+    border-radius: 8px;
+}
+
+#result h3 {
+    color: #006400;
+    margin-top: 0;
+    padding-bottom: 5px;
+    border-bottom: 1px dashed #c8e6c9;
+}
+
+#result ul {
+    list-style: none;
+    padding: 0;
+}
+
+#result li {
+    margin-bottom: 10px;
+    padding: 8px 0;
+    border-bottom: 1px dotted #ddd;
+    line-height: 1.5;
+}
+
+#result li strong {
+    color: #388e3c; /* 보상 종류 강조 */
+    font-weight: 600;
+}
+
+/* 에러 메시지 스타일 */
+#result p[style*="color: red"] {
+    background-color: #ffebee;
+    border: 1px solid #ef9a9a;
+    padding: 10px;
+    border-radius: 4px;
+    text-align: center;
+}
