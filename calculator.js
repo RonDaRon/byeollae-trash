@@ -117,6 +117,14 @@ document.addEventListener('DOMContentLoaded', () => {
         const rewards = calculateReward(type, amount);
         displayResults(rewards, type, amount, resultDiv);
     });
+
+    // **3. 엔터 키 감지 로직 추가 (수정)**
+    amountInput.addEventListener('keydown', (event) => {
+        if (event.key === 'Enter') {
+            event.preventDefault();
+            calculateButton.click();
+        }
+    });
 });
 
 
