@@ -30,10 +30,13 @@ function calculateReward(type, amount) {
             break;
 
         case 'PAPERPACK': // 종이팩: 1 kg 당 10L 1장, 2 kg 당 20L 1장, 1 kg 당 화장지 1롤
-            // 종이팩은 정수로만 지급 (반올림 없음)
+            // 종량제 봉투는 기존대로 Math.floor (버림) 유지
             results.bag10L = `${Math.floor(amount)}장`; // 1kg 당 10L 1장
             results.bag20L = `${Math.floor(amount / 2)}장`; // 2kg 당 20L 1장
-            results.toiletPaper = `${Math.floor(amount)}롤`; // 1kg 당 화장지 1롤
+            // 화장지 지급은 Math.round (반올림)으로 변경
+            results.toiletPaper = `${Math.round(amount)}롤`; // 1kg 당 화장지 1롤 (반올림 적용)
+            
+            return results;
             // 다른 로직은 생략하고 고정된 값을 반환
             return results;
 
