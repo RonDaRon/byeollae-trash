@@ -144,7 +144,7 @@ function displayResults(rewards, type, amount, resultElement) {
         output += `
             <li>**종량제 봉투 (10L)**: ${rewards.bag10L} (단일 지급)</li>
             <li>**종량제 봉투 (20L)**: ${rewards.bag20L} (단일 지급)</li>
-            <li>**상품권**: ${rewards.giftCertificate} (10원 단위 절사)</li>
+            <li>**남양주사랑상품권**: ${rewards.giftCertificate} (10원 단위 절사)</li>
         `;
     }
     // PAPERPACK
