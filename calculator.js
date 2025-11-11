@@ -30,28 +30,27 @@ function calculateReward(type, amount) {
             break;
 
         case 'PAPERPACK': // 종이팩: 1 kg 당 10L 1장, 2 kg 당 20L 1장, 1 kg 당 화장지 1롤
-            // 종량제 봉투는 기존대로 Math.floor (버림) 유지
-            results.bag10L = `${Math.floor(amount)}장`; // 1kg 당 10L 1장
-            results.bag20L = `${Math.floor(amount / 2)}장`; // 2kg 당 20L 1장
-            // 화장지 지급은 Math.round (반올림)으로 변경
+            // 종량제 봉투는 반올림 지급
+            results.bag10L = `${Math.round(amount)}장`; // 1kg 당 10L 1장
+            results.bag20L = `${Math.round(amount / 2)}장`; // 2kg 당 20L 1장
+            // 화장지 지급 또한 반올림
             results.toiletPaper = `${Math.round(amount)}롤`; // 1kg 당 화장지 1롤 (반올림 적용)
             
-            return results;
             // 다른 로직은 생략하고 고정된 값을 반환
             return results;
 
-        case 'BATTERY': // 폐건전지: 500 g(0.5kg) 당 10L 1장, 1 kg 당 20L 1장
+        case 'BATTERY': // 폐건전지: 500 g(0.5kg) 당 10L 1장, 1 kg 당 20L 1장 (반올림 적용)
             // 무게(kg) / 0.5 = 10L 개수
-            results.bag10L = `${Math.floor(amount / 0.5)}장`;
+            results.bag10L = `${Math.round(amount / 0.5)}장`;
             // 무게(kg) / 1 = 20L 개수
-            results.bag20L = `${Math.floor(amount / 1)}장`;
+            results.bag20L = `${Math.round(amount / 1)}장`;
             return results;
 
-        case 'LAMP': // 폐형광등: 5개 당 10L 1장, 10개 당 20L 1장
+        case 'LAMP': // 폐형광등: 5개 당 10L 1장, 10개 당 20L 1장 (반올림 적용)
             // 개수 / 5 = 10L 개수
-            results.bag10L = `${Math.floor(amount / 5)}장`;
+            results.bag10L = `${Math.round(amount / 5)}장`;
             // 개수 / 10 = 20L 개수
-            results.bag20L = `${Math.floor(amount / 10)}장`;
+            results.bag20L = `${Math.round(amount / 10)}장`;
             return results;
 
         default:
