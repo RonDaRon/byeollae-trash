@@ -82,6 +82,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const amountInput = document.getElementById('amount');
     const inputLabel = document.getElementById('amountLabel');
     const calculateButton = document.getElementById('calculateBtn');
+    const resetButton = document.getElementById('resetBtn');
     const resultDiv = document.getElementById('result');
 
     // 1. 드롭다운 변경 시 입력창 레이블 변경 및 초기화
@@ -112,7 +113,10 @@ document.addEventListener('DOMContentLoaded', () => {
         const amount = parseFloat(amountInput.value);
 
         if (!type || isNaN(amount) || amount <= 0) {
+            // ✅ 유효성 검사 실패 시 박스를 명시적으로 숨깁니다. (선택 사항이지만 깔끔합니다.)
+            resultDiv.style.display = 'none'; 
             resultDiv.innerHTML = '<p style="color: red;">쓰레기 종류를 선택하고 유효한 양을 입력해주세요.</p>';
+            resultDiv.style.display = 'block'; // 에러 메시지를 보이게 하기 위해 잠시 다시 켭니다.
             return;
         }
 
@@ -127,6 +131,19 @@ document.addEventListener('DOMContentLoaded', () => {
             calculateButton.click();
         }
     });
+
+    // 4. 초기화 버튼 클릭 리스너 추가
+    resetButton.addEventListener('click', () => {
+        // 쓰레기 종류 선택 초기화
+        typeSelect.value = '';
+        // 입력 값 초기화
+        amountInput.value = '';
+        // 입력 필드 컨테이너 숨기기
+        amountInputContainer.style.display = 'none';
+        // 결과 영역 내용 지우고 숨기기
+        resultDiv.innerHTML = '';
+        resultDiv.style.display = 'none';
+    });
 });
 
 
@@ -134,10 +151,20 @@ document.addEventListener('DOMContentLoaded', () => {
  * 계산 결과를 웹페이지에 표시하는 함수
  */
 function displayResults(rewards, type, amount, resultElement) {
+    // 계산이 시작되면 결과 영역이 보여짐. (CSS의 display: none을 해제)
+    resultElement.style.display = 'block';
+
+    let unit = (type === 'LAMP') ? '개' : 'kg';
     let output = `
-        <h3>✅ 보상 계산 결과 (종류: ${type}, 양: ${amount} ${type === 'LAMP' ? '개' : 'kg'})</h3>
+        <h3>✅ 보상 계산 결과 (종류: ${document.getElementById('wasteType').options[document.getElementById('wasteType').selectedIndex].text}, 양: ${amount} ${unit})</h3>
         <ul>
     `;
+
+    if (rewards.error) {
+        // 에러가 발생하면 다시 숨길 필요는 없지만, 에러 메시지를 표시.
+        resultElement.innerHTML = `<p style="color: red;">${rewards.error}</p>`;
+        return;
+    }
 
     // PET, CLOTHES
     if (type === 'PET' || type === 'CLOTHES') {

@@ -24,12 +24,15 @@
             </select>
         </div>
 
-        <div id="amountInputContainer">
+        <div id="amountInputContainer" style="display: none;">
             <label id="amountLabel" for="amount">2. 양 입력 (kg)</label>
             <input type="number" id="amount" step="any" min="0" placeholder="무게 또는 개수를 입력하세요">
         </div>
-
-        <button id="calculateBtn">보상 계산하기</button>
+        
+        <div style="display: flex; gap: 10px; margin-top: 20px;">
+            <button id="calculateBtn" style="flex-grow: 1">보상 계산하기</button>
+            <button id="resetBtn">초기화</button>
+        </div>
 
         <div id="result">
             </div>

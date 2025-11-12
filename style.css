@@ -71,15 +71,33 @@ select:focus, input[type="number"]:focus {
     border: none;
     border-radius: 6px;
     cursor: pointer;
-    margin-top: 10px;
-    width: 100%;
     font-size: 1.1em;
     font-weight: bold;
     transition: background-color 0.3s;
+    flex-grow: 1;
+    margin-top: 0;
 }
 
 #calculateBtn:hover {
     background-color: #008000; /* 호버 시 색상 어둡게 */
+}
+
+#resetBtn {
+    background-color: #dc3545; /* 빨간색 계열 */
+    color: white;
+    padding: 12px 15px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1.1em;
+    font-weight: bold;
+    transition: background-color 0.3s;
+    width: 30%; /* 계산 버튼 대비 상대적 크기 지정 */
+    margin-top: 0;
+}
+
+#resetBtn:hover {
+    background-color: #c82333; /* 호버 시 색상 어둡게 */
 }
 
 /* 🧮 결과 표시 영역 스타일 */
@@ -89,6 +107,9 @@ select:focus, input[type="number"]:focus {
     border: 1px solid #e0e0e0;
     background-color: #f9fffb; /* 연한 녹색 배경 */
     border-radius: 8px;
+
+    /* 기본적으로 숨김 처리 */
+    display: none;
 }
 
 #result h3 {
