@@ -33,7 +33,8 @@
 <!-- SCREENSHOT -->
 ### Screenshot
 
-<img src="images/screenshot.png" alt="screenshot" width="300">
+<img src="images/screenshot-before.png" alt="screenshot" width="300">
+<img src="images/screenshot-after.png" alt="screenshot" width="300">
 
 <!-- MARKDOWN LINKS & IMAGES -->
 [CSS-logo]: https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white
