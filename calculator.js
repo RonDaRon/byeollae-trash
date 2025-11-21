@@ -19,14 +19,16 @@ function calculateReward(type, amount) {
         case 'PET': // 투명 페트병: 1 kg 당 600원
             valueInWon = amount * 600;
             // 10L 봉투 개수 (370원 기준) = (가치 / 370원). 반올림 처리
-            baseBagCount10L = Math.round(valueInWon / BAG_PRICE_10L);
+            results.bag10L = `${Math.round(valueInWon / BAG_PRICE_10L)}장`;
+            results.bag20L = `${Math.round(valueInWon / BAG_PRICE_20L)}장`;
             break;
 
         case 'CLOTHES': // 의류: 3 kg 당 370원
             // 3kg 당 370원이므로, 1kg 당 370/3 원
             valueInWon = (amount / 3) * 370;
             // 10L 봉투 개수 (370원 기준) = (가치 / 370원). 반올림 처리
-            baseBagCount10L = Math.round(valueInWon / BAG_PRICE_10L);
+            results.bag10L = Math.round(valueInWon / BAG_PRICE_10L);
+            results.bag20L = Math.round(valueInWon / BAG_PRICE_20L);
             break;
 
         case 'PAPERPACK': // 종이팩: 1 kg 당 10L 1장, 2 kg 당 20L 1장, 1 kg 당 화장지 1롤
@@ -57,16 +59,7 @@ function calculateReward(type, amount) {
             return { error: "유효하지 않은 쓰레기 종류입니다." };
     }
 
-    // 2. 종량제 봉투 계산 (PET, CLOTHES에 적용. 반올림된 baseBagCount10L 사용)
-    // 10L 봉투: baseBagCount10L 장
-    results.bag10L = `${baseBagCount10L}장`;
-
-    // 20L 봉투: 10L 봉투 2장 가치와 같음. baseBagCount10L / 2
-    // 주의: baseBagCount10L이 홀수여도 20L 봉투만 지급해야 하므로 Math.floor 사용
-    results.bag20L = `${Math.floor(baseBagCount10L / 2)}장`;
-
-
-    // 3. 상품권 계산 (PET, CLOTHES에 적용)
+    // 2. 상품권 계산 (PET, CLOTHES에 적용)
     // 10원 단위로 제공, 1원 단위 버림
     const giftCert = Math.floor(valueInWon / 10) * 10;
     results.giftCertificate = `${giftCert}원`;

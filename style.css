@@ -82,6 +82,7 @@ select:focus, input[type="number"]:focus {
     background-color: #008000; /* 호버 시 색상 어둡게 */
 }
 
+/* ⛔️ 리셋 버튼 스타일 */
 #resetBtn {
     background-color: #dc3545; /* 빨간색 계열 */
     color: white;
