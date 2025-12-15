@@ -27,8 +27,8 @@ function calculateReward(type, amount) {
             // 3kg 당 370원이므로, 1kg 당 370/3 원
             valueInWon = (amount / 3) * 370;
             // 10L 봉투 개수 (370원 기준) = (가치 / 370원). 반올림 처리
-            results.bag10L = Math.round(valueInWon / BAG_PRICE_10L);
-            results.bag20L = Math.round(valueInWon / BAG_PRICE_20L);
+            results.bag10L = `${Math.round(valueInWon / BAG_PRICE_10L)}장`;
+            results.bag20L = `${Math.round(valueInWon / BAG_PRICE_20L)}장`;
             break;
 
         case 'PAPERPACK': // 종이팩: 1 kg 당 10L 1장, 2 kg 당 20L 1장, 1 kg 당 화장지 1롤
